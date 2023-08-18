@@ -10,7 +10,6 @@ on:
 
 jobs:
   test:
-    id: test
     runs-on: ubuntu-latest
     steps:
       - run: echo "Init..."
