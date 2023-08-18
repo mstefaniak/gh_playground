@@ -9,5 +9,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: echo "Status is ${{ inputs.status}}"
+    - name: Status
+      shell: bash
+      run: echo "Status is ${{ inputs.status}}"
       
