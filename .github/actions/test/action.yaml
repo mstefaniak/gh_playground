@@ -4,6 +4,7 @@ inputs:
     description: 'The status to announce'
     required: true
     type: string
+    default: 'unknown'
 
 runs:
   using: composite
