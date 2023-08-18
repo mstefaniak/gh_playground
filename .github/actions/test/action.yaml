@@ -5,11 +5,8 @@ inputs:
     required: true
     type: string
 
-jobs:
-  announce:
-    name: Announce
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: echo "Status is ${{ inputs.status}}"
+runs:
+  using: composite
+  steps:
+    - run: echo "Status is ${{ inputs.status}}"
       
