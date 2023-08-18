@@ -13,3 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello world!"
+      - name: XD
+        uses: ./.github/workflows/action.yaml
+        with:
+          status: Success
