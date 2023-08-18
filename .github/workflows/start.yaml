@@ -18,15 +18,15 @@ jobs:
         uses: ./.github/actions/test
         with:
           status: Success
-    
+      - run: echo "shouldRun=true" >> $GITHUB_OUTPUT
       - id: test1
         run: echo "pomo1='pomidor'" >> $GITHUB_OUTPUT
       - id: test2
         run: echo "pomo2=${{ steps.test1.outputs.pomo1 }}" >> $GITHUB_OUTPUT
-      - run: echo "shouldRun=true" >> $GITHUB_OUTPUT
+      
   job2:
     runs-on: ubuntu-latest
     needs: test
-    if: ${{ needs.test.outputs.shouldRun }} 
+    if: ${{ needs.test.result.shouldRun }} 
     steps:
-        - run: echo "VErify - ${{ needs.test.outputs.pomo2 }}"
+        - run: echo "VErify - ${{ needs.test.result.pomo2 }}"
