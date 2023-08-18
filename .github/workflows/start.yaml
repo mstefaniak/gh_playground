@@ -14,6 +14,6 @@ jobs:
     steps:
       - run: echo "Hello world!"
       - name: XD
-        uses: ./.github/workflows/action.yaml
+        uses: ./.github/actions/action-a.yaml
         with:
           status: Success
