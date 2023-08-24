@@ -21,12 +21,9 @@ jobs:
         if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
         run: |
           echo "error_message='Wrong environment chosen. The valid one is \"valid-env\"'" >> $GITHUB_OUTPUT
-  test:
+  status:
     runs-on: ubuntu-latest
-    env:
-      STATUS: 'test'
     steps:
-      - run: echo "Init..."
+      - run: echo "Status check..."
       - uses: actions/checkout@v3
-      - name: XD
-        uses: ./.github/actions/test
+      - uses: ./.github/actions/test
