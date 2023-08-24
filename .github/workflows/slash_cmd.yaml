@@ -17,6 +17,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             deploy
+          static-args: |
+            comment-id=${{ github.event.comment.id }}
+            comment-author=${{ github.event.comment.user.login }}
+            issue-id=${{ github.event.issue.number }}
+            commit-sha=${{ github.sha }}
       - name: Debug
         run: |
           echo ${{ join(steps.scd.outputs, ', ') }}
