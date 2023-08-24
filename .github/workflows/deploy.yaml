@@ -20,8 +20,4 @@ jobs:
       - id: validate-env
         if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
         run: |
-<<<<<<< Updated upstream
-          echo "Hello deploy !!!"
-=======
           echo "error_message="Wrong environment chosen. The valid one is \"valid-env\"" >> $GITHUB_OUTPUT
->>>>>>> Stashed changes
