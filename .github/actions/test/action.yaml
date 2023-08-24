@@ -19,5 +19,6 @@ runs:
       shell: bash
       run: |
         echo "The status is ${{ env.STATUS}}"
+        echo "The foo is:"
         echo $FOO
       
