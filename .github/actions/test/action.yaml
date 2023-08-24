@@ -8,14 +8,10 @@ inputs:
 
 runs:
   using: composite
-  env:
-    GOO: 555
   steps:
     - name: Set FOO
-      shell: bash
-      run: echo "FOO=666" >> $GITHUB_ENV
+      run: echo "FOO=${{ github.event.inputs.foo }}" >> $GITHUB_ENV
     - name: Test
-      shell: bash
       run: echo $FOO
     - name: Status
       env:
@@ -23,9 +19,4 @@ runs:
       shell: bash
       run: |
         echo "The status is ${{ env.STATUS}}"
-        echo "The foo is:"
-        echo $FOO
-        echo "The goo is:"
-        echo $GOO
-        echo "The End"
       
