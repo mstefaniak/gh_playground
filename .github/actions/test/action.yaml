@@ -8,6 +8,8 @@ inputs:
 
 runs:
   using: composite
+  env:
+    GOO: 555
   steps:
     - name: Set FOO
       shell: bash
@@ -23,4 +25,6 @@ runs:
         echo "The status is ${{ env.STATUS}}"
         echo "The foo is:"
         echo $FOO
+        echo "The goo is:"
+        echo $GOO
       
