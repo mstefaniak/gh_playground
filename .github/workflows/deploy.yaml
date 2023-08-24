@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      error-message: ${{ steps.validate-env.outputs.error_message }}
     steps:
       - uses: actions/checkout@v3
 
@@ -15,6 +17,7 @@ jobs:
           echo ${{ github.event.client_payload.slash_command.command }}
           echo ${{ github.event.client_payload.slash_command.args.all }}
 
-      - id: test
+      - id: validate-env
+        if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
         run: |
-          echo "Hello deploy!"
+          echo "error_message="Wrong environment chosen. The valid one is \"valid-env\"" >> $GITHUB_OUTPUT
