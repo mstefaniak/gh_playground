@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,7 +15,7 @@ jobs:
         run: |
           echo ${{ github.event.client_payload.slash_command.command }}
           echo ${{ github.event.client_payload.slash_command.args.all }}
-          echo ${{ github.event.client_payload.slash_command.unnamed.arg1 }}
+          echo ${{ join(github.event.client_payload.slash_command.unnamed, ', ') }}
 
       - name: Validate environment
         if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
