@@ -11,20 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Output command and arguments
-        run: |
-          echo ${{ github.event.client_payload.slash_command.command }}
-          echo ${{ github.event.client_payload.slash_command.args.all }}
-          echo ${{ join(github.event.client_payload.slash_command.unnamed, ', ') }}
-
       - name: Validate environment
-        if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
+        if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 != 'valid-env' }}
         uses: peter-evans/create-or-update-comment@v3
         with:
           comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
-          reactions: x
+          reactions: '-1'
           body: |
-            The given environment: 
-            ${{ github.event.client_payload.slash_command.unnamed.arg1 }} 
-            is not valid :x:
+            The given environment: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }} is not valid :x:
   
