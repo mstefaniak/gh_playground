@@ -8,6 +8,8 @@ inputs:
 
 runs:
   using: composite
+  env:
+      STATUS: 'test123'
   steps:
     - name: Status
       shell: bash

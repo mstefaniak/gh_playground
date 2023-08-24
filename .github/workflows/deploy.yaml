@@ -23,8 +23,6 @@ jobs:
           echo "error_message='Wrong environment chosen. The valid one is \"valid-env\"'" >> $GITHUB_OUTPUT
   test:
     runs-on: ubuntu-latest
-    env:
-      STATUS: 'test'
     steps:
       - run: echo "Init..."
       - uses: actions/checkout@v3
