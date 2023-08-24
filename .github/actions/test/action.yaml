@@ -8,8 +8,6 @@ inputs:
 
 runs:
   using: composite
-  env:
-      STATUS: 'failed xd'
   steps:
     - name: Status
       shell: bash
