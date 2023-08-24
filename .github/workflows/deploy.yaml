@@ -17,4 +17,4 @@ jobs:
 
       - id: test
         run: |
-          echo "Hello deploy !!!"
+          echo "Hello deploy!"
