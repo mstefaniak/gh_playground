@@ -7,8 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    outputs:
-      error-message: ${{ steps.validate-env.outputs.error_message }}
     steps:
       - uses: actions/checkout@v3
 
@@ -17,13 +15,11 @@ jobs:
           echo ${{ github.event.client_payload.slash_command.command }}
           echo ${{ github.event.client_payload.slash_command.args.all }}
 
-      - id: validate-env
+      - name: Validate environment
         if: ${{ github.event.client_payload.slash_command.unnamed.arg1 != 'valid-env' }}
-        run: |
-          echo "error_message='Wrong environment chosen. The valid one is \"valid-env\"'" >> $GITHUB_OUTPUT
-  status:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Status check..."
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/test
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
+          body: |
+            > The given environment: "${{ github.event.client_payload.slash_command.unnamed.arg1 }}" is not valid
+  
