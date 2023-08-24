@@ -11,7 +11,7 @@ runs:
   steps:
     - name: Set FOO
       shell: bash
-      run: echo "FOO=${{ github.event.inputs.foo }}" >> $GITHUB_ENV
+      run: echo "FOO=666" >> $GITHUB_ENV
     - name: Test
       shell: bash
       run: echo $FOO
