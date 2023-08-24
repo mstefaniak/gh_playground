@@ -11,5 +11,5 @@ runs:
   steps:
     - name: Status
       shell: bash
-      run: echo "Status is ${{ env.STATUS}}"
+      run: echo "The status is ${{ env.STATUS}}"
       
