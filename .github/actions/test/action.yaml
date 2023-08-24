@@ -1,0 +1,15 @@
+name: Test workflow
+inputs:
+  status:
+    description: 'The status to announce'
+    required: true
+    type: string
+    default: 'unknown'
+
+runs:
+  using: composite
+  steps:
+    - name: Status
+      shell: bash
+      run: echo "Status is ${{ inputs.status}}"
+      

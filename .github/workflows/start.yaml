@@ -1,15 +1,36 @@
 name: Test
 
-on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - labeled
-      - synchronize
+on: workflow_dispatch
+  # pull_request:
+  #   types:
+  #     - opened
+  #     - reopened
+  #     - labeled
+  #     - synchronize
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.test0.outputs.shouldRun }}
+      pomo: ${{ steps.test2.outputs.pomo2 }}
     steps:
-      - run: echo "Hello world"
+      - run: echo "Init..."
+      - uses: actions/checkout@v3
+      - name: XD
+        uses: ./.github/actions/test
+        with:
+          status: Success
+      - id: test0
+        run: echo "shouldRun=true" >> $GITHUB_OUTPUT
+      - id: test1
+        run: echo "pomo1='pomidor'" >> $GITHUB_OUTPUT
+      - id: test2
+        run: echo "pomo2=${{ steps.test1.outputs.pomo1 }}" >> $GITHUB_OUTPUT
+      
+  job2:
+    runs-on: ubuntu-latest
+    needs: test
+    if: ${{ needs.test.outputs.should_run }} 
+    steps:
+        - run: echo "VErify - ${{ needs.test.outputs.pomo }}"
