@@ -9,7 +9,7 @@ inputs:
 runs:
   using: composite
   env:
-      STATUS: 'test123'
+      STATUS: 'test12'
   steps:
     - name: Status
       shell: bash
