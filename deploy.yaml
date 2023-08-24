@@ -2,19 +2,7 @@ name: Deploy
 
 on:
   repository_dispatch:
-    inputs:
-      environment:
-        description: 'The environment to deploy to'
-        # required: true
-        default: staging13
-      namespaces:
-        description: 'The namespaces to use for the deployment'
-        # required: true
-        default: uk,de
-      debug:
-        description: 'The debugging options'
-        # required: true
-        default: 'get-apps-to-build-and-deploy,FORCE_ALL_DEPLOYMENTS'
+    types: [deploy-test-command]
 
 jobs:
   deploy:
