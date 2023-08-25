@@ -22,7 +22,7 @@ jobs:
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
-      - name: Debug
+      - name: Debug script
         uses: ./github/actions/test
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
