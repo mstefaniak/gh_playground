@@ -15,7 +15,7 @@ jobs:
           B: $GITHUB_SHA
           C: "${GITHUB_SHA}"
         run: |
-          echo "Commit - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}"
+          echo "Commit2 - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}, ${{ github.sha }}"
 
       - name: Invalid environment
         if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 != 'valid-env' }}
