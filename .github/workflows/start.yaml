@@ -1,12 +1,12 @@
 name: Test
 
-on: workflow_dispatch
-  # pull_request:
-  #   types:
-  #     - opened
-  #     - reopened
-  #     - labeled
-  #     - synchronize
+on: 
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - labeled
+      - synchronize
 
 jobs:
   test:
