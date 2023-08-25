@@ -10,8 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          echo "Commit - $GITHUB_SHA, ${GITHUB_SHA}"
+      - env:
+          A: ${GITHUB_SHA}
+          B: $GITHUB_SHA
+          C: "${GITHUB_SHA}"
+        run: |
+          echo "Commit - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}"
 
       - name: Invalid environment
         if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 != 'valid-env' }}
