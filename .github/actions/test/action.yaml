@@ -19,4 +19,5 @@ runs:
       shell: bash
       run: |
         echo "The status is ${{ env.STATUS}}"
+    - run: notify.sh
       
