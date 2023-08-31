@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test external action
-        uses: mstefaniak/gh_action@v2
+        uses: mstefaniak/gh_action@main
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v3
