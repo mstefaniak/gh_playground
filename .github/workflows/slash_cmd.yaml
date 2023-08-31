@@ -10,6 +10,8 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
+      - name: Test external action
+        uses: mstefaniak/gh_action@main
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v3
