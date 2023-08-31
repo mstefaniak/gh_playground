@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test external action
-        uses: mstefaniak/gh_action@main
+        uses: mstefaniak/gh_action@v1
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v3
@@ -25,8 +25,8 @@ jobs:
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
-      - name: Debug script
-        uses: ./.github/actions/test
+      # - name: Debug script
+      #   uses: ./.github/actions/test
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
         uses: peter-evans/create-or-update-comment@v2
