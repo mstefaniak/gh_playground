@@ -11,5 +11,5 @@ runs:
   steps:
     - name: Notify
       shell: bash
-      run: notify.sh
+      run: ./.github/actions/test/notify.sh
       
