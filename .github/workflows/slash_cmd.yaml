@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Test external action xd
+      - name: Test external action
         uses: mstefaniak/gh_action@v2
       - name: Slash Command Dispatch
         id: scd
