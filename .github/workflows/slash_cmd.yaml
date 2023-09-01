@@ -8,13 +8,17 @@ jobs:
 
   slashCommandDispatch:
     permissions: write-all
+    environment: prod
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Debug
+        shell: bash
+        run: |
+          echo "vars ${{ vars.MYVAR }}"
+          echo "secrets ${{ secrets.TEST }}"  
       - name: Test external action
         uses: mstefaniak/gh_action@main
-      - name: Debug
-        run: ls -la .github
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v3
