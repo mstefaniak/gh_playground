@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   repository_dispatch:
-    types: [deploy-command]
+    types: [build-docs-command]
 
 jobs:
   deploy:

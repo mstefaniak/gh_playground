@@ -11,26 +11,32 @@ jobs:
     environment: prod
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Debug
-        shell: bash
-        run: |
-          echo "vars ${{ vars.MYVAR }}"
-          echo "secrets ${{ secrets.TEST }}"  
-      - name: Test external action
-        uses: mstefaniak/gh_action@main
+      - uses: actions/checkout@v3
+      # - name: Debug environment
+      #   shell: bash
+      #   run: |
+      #     echo "vars ${{ vars.MYVAR }}"
+      #     echo "secrets ${{ secrets.TEST }}"  
+      # - name: Test external action
+      #   uses: mstefaniak/gh_action@main
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commands: |
-            deploy
           static-args: |
             comment-id=${{ github.event.comment.id }}
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
+          config: >
+            [
+              {
+                "command": "integration-test",
+                "permission": "write",
+                "issue_type": "both",
+              }
+            ]
       # - name: Debug script
       #   uses: ./.github/actions/test
       - name: Edit comment with error message
