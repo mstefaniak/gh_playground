@@ -24,13 +24,20 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commands: |
-            build-docs
+          commands: integration-test
           static-args: |
             comment-id=${{ github.event.comment.id }}
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
+          config: >
+            [
+              {
+                "command": "integration-test",
+                "permission": "write",
+                "issue_type": "both",
+              }
+            ]
       # - name: Debug script
       #   uses: ./.github/actions/test
       - name: Edit comment with error message
