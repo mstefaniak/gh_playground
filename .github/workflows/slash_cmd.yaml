@@ -30,32 +30,7 @@ jobs:
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
-          config: >
-            [
-              {
-                "command": "integration-test",
-                "permission": "write",
-                "issue_type": "both",
-              },
-              {
-                "command": "integration-test",
-                "permission": "write",
-                "issue_type": "both",
-                "repository": "peter-evans/slash-command-dispatch-processor",
-                "static_args": [
-                  "production",
-                  "region=us-east-1"
-                ]
-              },
-              {
-                "command": "create-ticket",
-                "permission": "write",
-                "issue_type": "issue",
-                "allow_edits": true,
-                "event_type_suffix": "-cmd",
-                "dispatch_type": "workflow"
-              }
-            ]
+          config-from-file: .github/slash-command-dispatch.json
       # - name: Debug script
       #   uses: ./.github/actions/test
       - name: Edit comment with error message
