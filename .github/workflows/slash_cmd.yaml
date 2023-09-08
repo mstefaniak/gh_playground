@@ -24,8 +24,6 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commands: integration-test
-          debug: true
           static-args: |
             comment-id=${{ github.event.comment.id }}
             comment-author=${{ github.event.comment.user.login }}
