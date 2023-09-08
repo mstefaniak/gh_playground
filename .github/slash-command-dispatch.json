@@ -8,7 +8,7 @@
       "command": "integration-test",
       "permission": "write",
       "issue_type": "both",
-      "repository": "ms/slash-command-dispatch-processor",
+      "repository": "ms/test",
       "static_args": [
         "production",
         "region=us-east-1"
