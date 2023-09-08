@@ -41,7 +41,7 @@ jobs:
                 "command": "integration-test",
                 "permission": "write",
                 "issue_type": "both",
-                "repository": "peter-evans/slash-command-dispatch-processor",
+                "repository": "ms/slash-command-dispatch-processor",
                 "static_args": [
                   "production",
                   "region=us-east-1"
