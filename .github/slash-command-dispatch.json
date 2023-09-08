@@ -1,25 +1,25 @@
 [
     {
-      "command": "integration-test",
-      "permission": "write",
-      "issue_type": "both",
+        "command": "integration-test",
+        "permission": "write",
+        "issue_type": "both"
     },
     {
-      "command": "integration-test",
-      "permission": "write",
-      "issue_type": "both",
-      "repository": "ms/test",
-      "static_args": [
-        "production",
-        "region=us-east-1"
-      ]
+        "command": "integration-test",
+        "permission": "write",
+        "issue_type": "both",
+        "repository": "ms/test",
+        "static_args": [
+            "production",
+            "region=us-east-1"
+        ]
     },
     {
-      "command": "create-ticket",
-      "permission": "write",
-      "issue_type": "issue",
-      "allow_edits": true,
-      "event_type_suffix": "-cmd",
-      "dispatch_type": "workflow"
+        "command": "create-ticket",
+        "permission": "write",
+        "issue_type": "issue",
+        "allow_edits": true,
+        "event_type_suffix": "-cmd",
+        "dispatch_type": "workflow"
     }
-  ]
+]
