@@ -24,6 +24,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          commands: integration-test
           static-args: |
             comment-id=${{ github.event.comment.id }}
             comment-author=${{ github.event.comment.user.login }}
@@ -35,6 +36,24 @@ jobs:
                 "command": "integration-test",
                 "permission": "write",
                 "issue_type": "both",
+              },
+              {
+                "command": "integration-test",
+                "permission": "write",
+                "issue_type": "both",
+                "repository": "peter-evans/slash-command-dispatch-processor",
+                "static_args": [
+                  "production",
+                  "region=us-east-1"
+                ]
+              },
+              {
+                "command": "create-ticket",
+                "permission": "write",
+                "issue_type": "issue",
+                "allow_edits": true,
+                "event_type_suffix": "-cmd",
+                "dispatch_type": "workflow"
               }
             ]
       # - name: Debug script
