@@ -8,7 +8,7 @@
         "command": "integration-test",
         "permission": "write",
         "issue_type": "both",
-        "repository": "ms/test",
+        "repository": "ms/test-2",
         "static_args": [
             "production",
             "region=us-east-1"
