@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   repository_dispatch:
-    types: [integration-test-command]
+    types: [deploy-command]
 
 jobs:
   deploy:
