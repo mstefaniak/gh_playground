@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Debug environment
-        shell: bash
-        run: |
-          echo "vars ${{ vars.MYVAR }}"
-          echo "secrets ${{ secrets.TEST }}"  
+      # - name: Debug environment
+      #   shell: bash
+      #   run: |
+      #     echo "vars ${{ vars.MYVAR }}"
+      #     echo "secrets ${{ secrets.TEST }}"  
       # - name: Test external action
       #   uses: mstefaniak/gh_action@main
       - name: Slash Command Dispatch
@@ -24,13 +24,13 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commands: integration-test
+          commands: deploy
           static-args: |
             comment-id=${{ github.event.comment.id }}
             comment-author=${{ github.event.comment.user.login }}
             issue-id=${{ github.event.issue.number }}
             commit-sha=${{ github.sha }}
-          config-from-file: .github/slash-command-dispatch.json
+          # config-from-file: .github/slash-command-dispatch.json
       # - name: Debug script
       #   uses: ./.github/actions/test
       - name: Edit comment with error message
