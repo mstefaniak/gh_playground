@@ -1,4 +1,4 @@
-name: Test workflow
+name: Test workflow 3
 inputs:
   status:
     description: 'The status to announce'
