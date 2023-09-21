@@ -18,7 +18,7 @@ jobs:
       #     echo "secrets ${{ secrets.TEST }}"  
       # - name: Test external action
       #   uses: mstefaniak/gh_action@main
-      - name: Test secret
+      - name: Test secretz
         shell: bash
         env:
           SUPER_SECRET: ${{ secrets.CMD_DISPATCH_PAT }}
