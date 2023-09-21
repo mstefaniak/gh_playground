@@ -22,7 +22,6 @@ jobs:
         id: scd
         uses: mstefaniak/slash-command-dispatch@main
         with:
-          # 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
           token: ${{ secrets.CMD_DISPATCH_PAT }}
           commands: deploy
           static-args: |
