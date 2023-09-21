@@ -18,16 +18,11 @@ jobs:
       #     echo "secrets ${{ secrets.TEST }}"  
       # - name: Test external action
       #   uses: mstefaniak/gh_action@main
-      - name: Test secretz
-        shell: bash
-        env:
-          SUPER_SECRET: ${{ secrets.CMD_DISPATCH_PAT }}
-        run: echo "$SUPER_SECRET"
       - name: Slash Command Dispatch
         id: scd
         uses: mstefaniak/slash-command-dispatch@main
         with:
-          # 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
+          # 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
           token: ${{ secrets.CMD_DISPATCH_PAT }}
           commands: deploy
           static-args: |
