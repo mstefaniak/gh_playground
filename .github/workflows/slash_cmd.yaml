@@ -8,7 +8,6 @@ jobs:
 
   slashCommandDispatch:
     permissions: write-all
-    environment: prod
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,6 +18,11 @@ jobs:
       #     echo "secrets ${{ secrets.TEST }}"  
       # - name: Test external action
       #   uses: mstefaniak/gh_action@main
+      - name: Test secret
+        shell: bash
+        env:
+          SUPER_SECRET: ${{ secrets.CMD_DISPATCH_PAT }}
+        run: echo "$SUPER_SECRET"
       - name: Slash Command Dispatch
         id: scd
         uses: mstefaniak/slash-command-dispatch@main
