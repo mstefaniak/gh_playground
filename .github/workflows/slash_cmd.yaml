@@ -23,7 +23,8 @@ jobs:
         id: scd
         uses: mstefaniak/slash-command-dispatch@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # XD: 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
+          token: ${{ secrets.CMD_DISPATCH_PAT }}
           commands: deploy
           static-args: |
             comment-id=${{ github.event.comment.id }}
