@@ -31,7 +31,7 @@ jobs:
       - name: Create URL to the run
         id: create-url
         run: echo "runUrl=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
-      - name: Create comment with the run URL
+      - name: Create success comment with the run URL
         uses: peter-evans/create-or-update-comment@v3
         if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 == 'valid-env' }}
         with:
