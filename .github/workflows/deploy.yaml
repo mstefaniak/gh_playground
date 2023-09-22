@@ -25,23 +25,11 @@ jobs:
           environment: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
           namespaces: ${{ github.event.client_payload.slash_command.args.unnamed.arg2 }}
 
+      - name: Valid environment
+        if: steps.validate-cmd-deploy-params.outputs.valid == 'true'
+        run: echo "All valid!"
       - name: Invalid environment
-        if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 != 'valid-env' }}
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
-          reactions: '-1'
-          body: |
-            The given environment "${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}" is not valid :x:
-      - name: Create URL to the run
-        id: create-url
-        run: echo "runUrl=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
-      - name: Create success comment with the run URL
-        uses: peter-evans/create-or-update-comment@v3
-        if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 == 'valid-env' }}
-        with:
-          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
-          body: |
-            The branch is getting deployed to `${{ github.event.client_payload.slash_command.args.unnamed.all }}` now
-            Workflow: ${{ steps.create-url.outputs.runUrl }}
+        if: steps.validate-cmd-deploy-params.outputs.valid == 'false'
+        run: echo "Invalid!"
+      
         
