@@ -35,10 +35,10 @@ jobs:
         uses: peter-evans/create-or-update-comment@v3
         if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 == 'valid-env' }}
         with:
-          issue-number: ${{ inputs.issue-id }}
+          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
           reactions: hooray
           body: |
-            @${{ inputs.comment-author }} is deploying this branch to `${{ inputs.environment }}` now :shipit:
+            @${{ github.event.client_payload.slash_command.args.named.comment-author }} is deploying this branch to `${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}` `${{ github.event.client_payload.slash_command.args.unnamed.arg2 }}` now :shipit:
 
             Workflow run URL: ${{ steps.create-url.outputs.runUrl }}
         
