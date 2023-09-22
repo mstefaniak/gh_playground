@@ -1,4 +1,4 @@
-name: Deploy test
+name: Deploy test 2
 
 on:
   repository_dispatch:
@@ -30,6 +30,10 @@ jobs:
         run: echo "All valid!"
       - name: Invalid environment
         if: steps.validate-cmd-deploy-params.outputs.valid == 'false'
-        run: echo "Invalid!"
+        run: 
+          echo "Invalid!"
+          exit 1
+      - name: Final message
+        run: echo "This is the end!"
       
         
