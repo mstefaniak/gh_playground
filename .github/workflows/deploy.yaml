@@ -16,6 +16,9 @@ jobs:
           C: "${GITHUB_SHA}"
         run: |
           echo "Commit2 - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}, ${{ github.sha }}"
+      - name: Debug inputs
+        run: |
+          echo "Inputs: ${{ toJson(github.event.client_payload.slash_command.args) }}"
 
       - name: Invalid environment
         if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 != 'valid-env' }}
