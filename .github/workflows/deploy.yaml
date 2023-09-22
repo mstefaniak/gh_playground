@@ -32,7 +32,7 @@ jobs:
         if: steps.validate-cmd-deploy-params.outputs.valid == 'false'
         run: 
           echo "Invalid!"
-          exit 1
+          failure()
       - name: Final message
         run: echo "This is the end!"
       
