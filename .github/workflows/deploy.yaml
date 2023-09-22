@@ -28,12 +28,17 @@ jobs:
           reactions: '-1'
           body: |
             The given environment "${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}" is not valid :x:
-      - name: Success
-        if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 == 'valid-env' }}
+      - name: Create URL to the run
+        id: create-url
+        run: echo "runUrl=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
+      - name: Create comment with the run URL
         uses: peter-evans/create-or-update-comment@v3
+        if: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 == 'valid-env' }}
         with:
-          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
+          issue-number: ${{ inputs.issue-id }}
           reactions: hooray
           body: |
-            Great success :green_heart:
+            @${{ inputs.comment-author }} is deploying this branch to `${{ inputs.environment }}` now :shipit:
+
+            Workflow run URL: ${{ steps.create-url.outputs.runUrl }}
         
