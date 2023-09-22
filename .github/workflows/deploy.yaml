@@ -19,7 +19,7 @@ jobs:
           
       - name: Validate command parameters
         id: validate-cmd-deploy-params
-        uses: plentific/dashboard-github-workflows/.github/actions/validate-cmd-deploy-params@ms/fep-1631-add-cmd-args-validation-action
+        uses: mstefaniak/gh_action@main
         with:
           comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
           environment: ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
