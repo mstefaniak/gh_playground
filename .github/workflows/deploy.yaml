@@ -1,4 +1,4 @@
-name: Deploy test
+name: Deploy test 2
 
 on:
   repository_dispatch:
@@ -27,11 +27,16 @@ jobs:
 
       - name: Valid environment
         if: steps.validate-cmd-deploy-params.outputs.valid == 'true'
-        run: echo "All valid!"
+        run: |
+          echo "All valid!"
+          echo "Env > ${{ steps.validate-cmd-deploy-params.outputs.valid_env }}"
+          echo "Namespaces > ${{ steps.validate-cmd-deploy-params.outputs.valid_namespaces }}"
+        
       - name: Invalid environment
         if: steps.validate-cmd-deploy-params.outputs.valid == 'false'
-        run: 
+        run: |
           echo "Invalid!"
+          echo "Error > ${{ steps.validate-cmd-deploy-params.outputs.error_messages }}"
           failure()
       - name: Final message
         run: echo "This is the end!"
