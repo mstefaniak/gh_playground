@@ -37,8 +37,35 @@ jobs:
         run: |
           echo "Invalid!"
           echo "Error > ${{ steps.validate-cmd-deploy-params.outputs.error_messages }}"
-          failure()
+          
       - name: Final message
         run: echo "This is the end!"
-      
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Mock to test workflow
+    - name: Test app
+      id: test-app # will be referenced later
+      run: |
+        echo "Testing app (randomly fails)"
+        if [[ $(($RANDOM % 2)) == 0 ]]; then exit 0; else exit 1; fi
+
+    # runs always
+    - name: test-clean
+      if: always()
+      run: echo "Cleanup after tests"
+
+    # runs always
+    - name: test-will
+      run: echo "Will this run?"
+
+    # runs if previous jobs failed and test-app was not successful (failure/cancelled)
+    - name: action-slack
+      if: failure() && steps.test-app.outcome != 'success'
+      run: |
+        echo "Run action-slack"
+        echo "Result of test-app was '${{ steps.test-app.outcome }}'"
         
