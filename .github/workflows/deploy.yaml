@@ -1,4 +1,4 @@
-name: Deploy test 2
+name: Deploy test
 
 on:
   repository_dispatch:
@@ -56,7 +56,7 @@ jobs:
 
     # runs always
     - name: test-clean
-      if: always() && steps.test-app.outputs.test == '123'
+      if: ${{ always() && steps.test-app.outputs.test == '123' }}
       run: echo "Cleanup after tests 123"
 
     # runs always
