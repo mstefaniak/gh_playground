@@ -1,4 +1,4 @@
-name: Deploy test
+name: Deploy test 2
 
 on:
   repository_dispatch:
@@ -50,13 +50,19 @@ jobs:
     - name: Test app
       id: test-app # will be referenced later
       run: |
+        echo "test=123" >> $GITHUB_OUTPUT
         echo "Testing app (randomly fails)"
         if [[ $(($RANDOM % 2)) == 0 ]]; then exit 0; else exit 1; fi
 
     # runs always
     - name: test-clean
-      if: always()
-      run: echo "Cleanup after tests"
+      if: always() && steps.test-app.outputs.test == '123'
+      run: echo "Cleanup after tests 123"
+
+    # runs always
+    - name: test-2
+      if: always() && steps.test-app.outputs.test == '124'
+      run: echo "Cleanup after tests 124"
 
     # runs always
     - name: test-will
