@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  # TODO: remove post-MVP
+  # pull_request:
+  #   types:
+  #     - opened
+  #     - reopened
+  #     - labeled
+  #     - synchronize
+
+  push:
+    branches: [main]
+
+jobs:
+  deploy_dashboard:
+    run:
+      echo "Deploying dashboard, branch -> ${{ github.ref }}, ${{ github.event.pull_request.merged_html_url }}"
