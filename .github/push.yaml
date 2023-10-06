@@ -13,6 +13,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy_dashboard:
+  merge_test:
+    name: Merge test
     run:
       echo "Deploying dashboard, branch -> ${{ github.ref }}, ${{ github.event.pull_request.merged_html_url }}"
