@@ -18,4 +18,4 @@ jobs:
     steps:
       - name: Merge test
         run:
-          echo "Deploying dashboard, branch -> ${{ github.ref }}, ${{ github.ref_name }}, commit message => ${{ github.event.head_commit }} "
+          echo "Deploying dashboard, branch -> ${{ github.ref }}, ${{ github.ref_name }}, commit message => ${{ github.event.head_commit.url }} "
