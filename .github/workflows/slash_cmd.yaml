@@ -25,4 +25,5 @@ jobs:
           token: ${{ secrets.CMD_DISPATCH_PAT }}
           commands: deploy
           static-args: |
+            actor=${{ github.event.comment.user.login }}
             comment-id=${{ github.event.comment.id }}
