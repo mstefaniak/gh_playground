@@ -1,4 +1,4 @@
-name: Deploy test
+name: Deploy test 2
 
 on:
   repository_dispatch:
@@ -16,7 +16,7 @@ jobs:
           C: "${GITHUB_SHA}"
         run: |
           echo "Commit2 - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}, ${{ github.sha }}"
-          echo "Workflow: https://github.com/${{ github.event.repository.owner }}/${{ github.event.repository.name }}/actions/runs/${{ github.run_id }}"
+          echo "Workflow: https://github.com/${{ github.event.repository.full_name }}/actions/runs/${{ github.run_id }}"
           
       - name: Validate command parameters
         id: validate-cmd-deploy-params
