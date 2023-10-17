@@ -41,8 +41,23 @@ jobs:
           echo "Invalid!"
           echo "Error > ${{ steps.validate-cmd-deploy-params.outputs.error_messages }}"
           
-      - name: Final message
-        run: echo "This is the end!"
+      - name: Update comment with success message
+        if: steps.validate-cmd-deploy-params.outputs.valid == 'true'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
+          body: |
+            > :tada: The deployment has succeeded
+          reactions: '+1'
+
+      - name: Update comment with success message
+        if: steps.validate-cmd-deploy-params.outputs.valid == 'false'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ github.event.client_payload.slash_command.args.named.comment-id }}
+          body: |
+            > :x: The deployment has failed
+          reactions: '-1'
 
   build-and-test:
     runs-on: ubuntu-latest
