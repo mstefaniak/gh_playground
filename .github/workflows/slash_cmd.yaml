@@ -1,4 +1,4 @@
-name: Slash Command Dispatch
+name: Slash Command Dispatch 2
 
 on:
   issue_comment:
@@ -25,5 +25,5 @@ jobs:
           token: ${{ secrets.CMD_DISPATCH_PAT }}
           commands: deploy
           static-args: |
-            actor=${{ github.actor }}
+            actor=${{ github.event.issue.user.login }}
             comment-id=${{ github.event.comment.id }}
