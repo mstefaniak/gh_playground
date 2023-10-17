@@ -17,8 +17,8 @@ jobs:
         run: |
           echo "Commit2 - ${{ env.A }}, ${{ env.B }}, ${{ env.C }}, ${{ github.sha }}"
           echo "Workflow: https://github.com/${{ github.event.repository.full_name }}/actions/runs/${{ github.run_id }}"
-          echo "Author: @${{ github.event.client_payload.slash_command.args.named.author }}
-          "
+          echo "Author: @${{ github.event.client_payload.slash_command.args.named.author }}"
+          echo "PR: https://github.com/${{ github.event.repository.full_name }}/pull/${{ github.event.client_payload.pull_request.number }}"
           
       - name: Validate command parameters
         id: validate-cmd-deploy-params
