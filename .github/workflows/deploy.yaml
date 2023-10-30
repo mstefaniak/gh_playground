@@ -108,5 +108,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-        - run: echo "Verify result - ${{ needs.test.outputs.result }}"
+        - run: echo "Verify result - ${{ fromJSON(needs.test.outputs.result) }}"
         

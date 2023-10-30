@@ -1,10 +1,11 @@
 const fs = require('fs')
 const os = require('os')
 
-const result = {
-  name: 'test',
-  value: 'test'
-}
+const result = 'XD'
+// {
+//   name: 'test',
+//   value: 'test'
+// }
 
 const filePath = process.env.GITHUB_OUTPUT
 const delimiter = `ghadelimiter`
