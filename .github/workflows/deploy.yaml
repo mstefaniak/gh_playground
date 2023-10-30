@@ -1,4 +1,4 @@
-name: Deploy test
+name: Deploy test2
 
 on:
   repository_dispatch:
