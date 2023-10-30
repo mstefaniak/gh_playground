@@ -7,6 +7,7 @@ const result = {
 }
 
 const filePath = process.env.GITHUB_OUTPUT
-fs.appendFileSync(filePath, `result<<${JSON.stringify(result)}${os.EOL}`, {
+const delimiter = `ghadelimiter`
+fs.appendFileSync(filePath, `result<<${delimiter}${JSON.stringify(result)}${delimiter}${os.EOL}`, {
   encoding: 'utf8'
 })
