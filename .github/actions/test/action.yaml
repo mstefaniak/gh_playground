@@ -3,7 +3,6 @@ inputs:
   status:
     description: 'The status to announce'
     required: true
-    type: string
     default: 'unknown'
 
 runs:
@@ -11,5 +10,5 @@ runs:
   steps:
     - name: Notify
       shell: bash
-      run: ./.github/actions/test/notify.sh
+      run: node ./.github/actions/test/test.js
       
