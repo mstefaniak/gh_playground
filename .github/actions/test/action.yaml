@@ -4,11 +4,15 @@ inputs:
     description: 'The status to announce'
     required: true
     default: 'unknown'
-
+outputs:
+  result:
+    description: 'The result of the announcement'
+    value: ${steps.one.outputs.result}
 runs:
   using: composite
   steps:
     - name: Notify
+      id: one
       shell: bash
       run: node ./.github/actions/test/test.js
       
