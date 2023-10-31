@@ -7,7 +7,7 @@ inputs:
 outputs:
   result:
     description: 'The result of the announcement'
-    value: ${steps.one.outputs.result}
+    value: ${{ steps.one.outputs.result }}
 runs:
   using: composite
   steps:
