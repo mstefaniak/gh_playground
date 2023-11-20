@@ -1,5 +1,5 @@
-name: Test workflow
-inputs:
+name: Test workflow 2
+inputs: 
   status:
     description: 'The status to announce'
     required: true
