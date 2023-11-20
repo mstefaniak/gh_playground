@@ -19,6 +19,6 @@ jobs:
       - name: Test external action
         uses: mstefaniak/gh_action@main
         with:
-          comment-id=${{ github.event.comment.id }}
-          build_status=${{ job.status }}
-          init_status=${{ job.status }}
+          comment-id: ${{ github.event.comment.id }}
+          build_status: ${{ job.status }}
+          init_status: ${{ job.status }}
