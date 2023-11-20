@@ -20,5 +20,5 @@ jobs:
         uses: mstefaniak/gh_action@main
         with:
           comment-id: ${{ github.event.comment.id }}
-          build_status: ${{ job.status }}
-          init_status: ${{ job.status }}
+          build_status: success
+          init_status: skipped
