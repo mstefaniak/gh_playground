@@ -16,7 +16,29 @@ jobs:
         run: |
           echo "vars ${{ vars.MYVAR }}"
           echo "secrets ${{ secrets.TEST }}"  
-      - name: Test external action
+
+      - name: Test skipped
+        uses: mstefaniak/gh_action@main
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          build_status: skipped
+          init_status: success
+
+      - name: Test cancelled
+        uses: mstefaniak/gh_action@main
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          build_status: skipped
+          init_status: cancelled
+
+      - name: Test failure
+        uses: mstefaniak/gh_action@main
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          build_status: failure
+          init_status: success
+
+      - name: Test unhandled
         uses: mstefaniak/gh_action@main
         with:
           comment-id: ${{ github.event.comment.id }}
