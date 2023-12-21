@@ -1,4 +1,4 @@
-name: Deploy 2
+name: Deploy
 
 on:
   # TODO: remove post-MVP
