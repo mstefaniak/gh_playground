@@ -1,4 +1,4 @@
-name: Slash Command Dispatch
+name: Slash Command Dispatch 2
 
 on:
   issue_comment:

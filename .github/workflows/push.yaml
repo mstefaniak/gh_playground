@@ -19,3 +19,10 @@ jobs:
       - name: Merge test
         run:
           echo "Deploying dashboard, branch -> ${{ github.ref }}, ${{ github.ref_name }}, commit message => ${{ github.event.head_commit.url }}"
+      - name: Get Pull Request Details
+        uses: mstefaniak/gh_action@main
+        with:
+          commit_sha: ${{ github.sha }}
+          owner: 'mstefaniak'
+          repo: 'gh_playground'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
